@@ -314,6 +314,7 @@ async function main() {
     },
   ];
 
+  await doRun1(BeautyMakeup);
   return;
 
   await cronLoop();
@@ -346,7 +347,6 @@ main().then(function () {
     content = fs.readFileSync(logFile);
   }
   content += resultContent;
-  return;
   if (!_.isEmpty(errorOutput)) {
     mailer.send({
       subject: ['lazy_script_error', nowDate, nowHour].join('_'),
@@ -358,6 +358,7 @@ main().then(function () {
   mailer.send({
     subject: title, text: content,
   });
+  return;
   serverChan.send(title, content).then(() => {
     console.log('发送成功');
   });

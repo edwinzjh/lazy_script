@@ -49,6 +49,7 @@ class BeautyMakeup extends Template {
 
     await initToken();
     if (!token) return;
+    self.log('token got');
 
     const wsMsg = {
       //初始化 请求
@@ -145,6 +146,7 @@ class BeautyMakeup extends Template {
     let opened = false;
     ws.on('open', async () => {
       opened = true;
+      self.log('opened');
     });
     ws.on('message', onMessage);
     await afterOpen();
@@ -154,6 +156,7 @@ class BeautyMakeup extends Template {
         await sleep(2);
         return afterOpen();
       }
+      self.log('start do');
       await sendMessage(wsMsg.init);
       await sendMessage(wsMsg.stats); // TODO 该逻辑可能不需要
       await sendMessage(wsMsg.shop_products);
@@ -191,6 +194,7 @@ class BeautyMakeup extends Template {
         if (self.isSuccess(data)) return data['token'];
       });
       if (!isvToken) return;
+      self.log('isvToken got');
       token = await api.doUrl('https://xinruimz-isv.isvjcloud.com/api/auth', {
         headers: {
           cookie: `IsvToken=${isvToken}`,
