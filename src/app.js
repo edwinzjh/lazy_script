@@ -341,11 +341,17 @@ main().then(function () {
   if (!fs.existsSync(resultPath)) return;
   return fs.readFileSync(resultPath);
 }).then((resultContent = '') => {
-  const logFile = getLogFile('request');
-  let content = '';
-  if (fs.existsSync(logFile)) {
-    content = fs.readFileSync(logFile);
+  function getContent(fileName) {
+    const logFile = getLogFile(fileName);
+    let content = '';
+    if (fs.existsSync(logFile)) {
+      content = fs.readFileSync(logFile);
+    }
+    return content;
   }
+  let content = '';
+  content += getContent('request');
+  content += getContent('app');
   content += resultContent;
   if (!_.isEmpty(errorOutput)) {
     mailer.send({

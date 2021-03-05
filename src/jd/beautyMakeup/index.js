@@ -199,6 +199,12 @@ class BeautyMakeup extends Template {
         headers: {
           cookie: `IsvToken=${isvToken}`,
           origin: 'https://xinruimz-isv.isvjcloud.com',
+          'Referer': `https://xinruimz-isv.isvjcloud.com/logined_jd/`,
+          'Accept': `application/x.jd-school-island.v1+json`,
+          'Content-Type': `application/json;charset=utf-8`,
+          'Authorization': `Bearer undefined`,
+          'Source': `02`,
+          'User-Agent': `jdapp;iPhone;9.4.0;14.4;;network/wifi;ADID/;supportApplePay/0;hasUPPay/0;hasOCPay/0;model/iPhone13,3;addressid/138474561;supportBestPay/0;appBuild/167541;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1`,
         },
         body: {
           'token': isvToken,
