@@ -204,7 +204,10 @@ class BeautyMakeup extends Template {
           'token': isvToken,
           'source': '01',
         },
-      }).then(data => _.property('access_token')(data));
+      }).then(data => {
+        self.log(JSON.stringify(data));
+        return _.property('access_token')(data);
+      });
     }
 
     async function onMessage(result) {

@@ -341,7 +341,7 @@ main().then(function () {
   if (!fs.existsSync(resultPath)) return;
   return fs.readFileSync(resultPath);
 }).then((resultContent = '') => {
-  const logFile = getLogFile('app');
+  const logFile = getLogFile('request');
   let content = '';
   if (fs.existsSync(logFile)) {
     content = fs.readFileSync(logFile);
